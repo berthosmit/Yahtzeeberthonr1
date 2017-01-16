@@ -1,0 +1,78 @@
+// OUTPUT
+// uitkomst eerste worp gevolgd door vraag 2e worp 
+//STOP
+
+
+import java.util.Scanner;
+
+public class Yahtzee_nw2 {
+
+	public static void main(String[] args){
+
+		//		Scanner startSpel = new Scanner(System.in);
+
+		int[] dobbelstenen = {0,0,0,0,0};					// waarde dobbelstenen VOOR 1e worp
+		for ( int i = 0 ; i < dobbelstenen.length ; i++){
+			dobbelstenen[i] = (int)(Math.random()*6) + 1;
+		}
+		// uitdraai van de waarde van de dobbelstenen NA de eerste worp
+		System.out.println("Nummering van de dobbelstenen:  1  2  3  4  5");
+		System.out.print("Waarde dobbelstenen NA 1e worp: " + dobbelstenen[0]);
+		System.out.print("  " + dobbelstenen[1]);
+		System.out.print("  " + dobbelstenen[2]);
+		System.out.print("  " + dobbelstenen[3]);
+		System.out.println("  " + dobbelstenen[4]);
+		System.out.print("Hoeveel dobbelstenen wilt u opnieuw werpen? ");
+		Scanner tweedeWorp=new Scanner(System.in);					// bepaalt het AANTAL opnieuw te werpen dobbelstenen
+		Scanner nummerDobbelsteen=new Scanner(System.in);			// bepaalt WELKE dobbelstenen opnieuw geworpen moeten worden
+
+		int aantal = tweedeWorp.nextInt();
+		System.out.println(" ");
+		// als aantal = 0 dan einde spel/worp
+		if (aantal == 0) {
+			System.out.print("U wilt alle dobbelstenen behouden. Daarmee is uw beurt voorbij. Uw laatste worp was ");
+			System.out.print("  " + dobbelstenen[0]);
+			System.out.print("  " + dobbelstenen[1]);
+			System.out.print("  " + dobbelstenen[2]);
+			System.out.print("  " + dobbelstenen[3]);
+			System.out.print("  " + dobbelstenen[4]);
+
+		} else if (aantal == 1) {
+			System.out.println("U wilt " + aantal + " dobbelsteen opnieuw werpen en " + (5 - aantal) + " behouden.");
+		} else {
+			System.out.println("U wilt " + aantal + " dobbelstenen opnieuw werpen en " + (5 - aantal) + " behouden.");
+		}
+		//	}
+		//}
+
+		// let op: als aantal = 5 niet vragen welke dobbelstenen opnieuw geworpen moeten worden maar meteen door naar volgende worp
+		if (aantal == 5) {
+			System.out.print("U wilt alle dobbelstenen opnieuw gooien.");
+		} else if (aantal == 1) {
+			System.out.print("Welke dobbelsteen wenst u opnieuw te werpen? Voer het nummer in gevolgd door <Enter>.");
+			int k = nummerDobbelsteen.nextInt();
+		} else {
+			System.out.println("Welke dobbelstenen wenst u opnieuw te werpen? Voer van elke dobbelsteen het nummer in gevolgd door <Enter>.");
+			for ( int j = 0 ; j < aantal ; j++){
+				int m = nummerDobbelsteen.nextInt();
+				if (m == 1) {
+					dobbelstenen[0] = (int)(Math.random()*6) + 1;
+				}
+				else  if (m == 2) {
+					dobbelstenen[1] = (int)(Math.random()*6) + 1;
+				}
+				else if (m == 3) {
+					dobbelstenen[2] = (int)(Math.random()*6) + 1;
+				}
+				else if (m == 4) {
+					dobbelstenen[3] = (int)(Math.random()*6) + 1;
+				}
+				else if (m == 5) {
+					dobbelstenen[4] = (int)(Math.random()*6) + 1;
+				}
+			}
+		}		
+	}
+
+
+}
